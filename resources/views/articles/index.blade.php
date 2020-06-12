@@ -13,11 +13,18 @@
           <div class="card-body">
             <h2 class="card-title">{{ $article->title }}</h2>
             <p class="card-text">{{ $article->excerpt }}</p>
-            <a href="/articles/{{ $article->id }}" class="btn btn-primary">Read More &rarr;</a>
+            <a href="{{ route('articles.show', [$article->id]) }}" class="btn btn-primary">Read More &rarr;</a>
           </div>
           <div class="card-footer text-muted">
-            Posted on January 1, 2017 by
-            <a href="#">Start Bootstrap</a>
+            <p>Posted on January 1, 2017 by
+              <a href="#">Start Bootstrap</a>
+            </p>
+            <p>
+              @foreach($article->tags as $tag)
+              
+                <a href="/articles?tag={{ $tag->name }}">{{ $tag->name }}</a>
+            </p>
+              @endforeach
           </div>
         </div>
         @endforeach

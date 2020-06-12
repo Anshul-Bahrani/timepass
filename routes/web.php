@@ -15,8 +15,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/','Articlescontroller@index');
 // Route::get('/',[Articlescontroller::class, 'index']);
+Route::get('/articles', 'Articlescontroller@index');
+Route::get('/articles/create', 'Articlescontroller@create');
+Route::get('/articles/{article}', 'Articlescontroller@show')->name('articles.show');
+Route::post('/articles', 'Articlescontroller@store');
+Route::get('/articles/{article}/edit', 'Articlescontroller@edit');
+Route::put('/articles/{article}', 'Articlescontroller@update');
 
-Route::get('/articles/{article_id}', 'Articlescontroller@show');
 
 Route::get('/posts', function () {
     return view('post');
